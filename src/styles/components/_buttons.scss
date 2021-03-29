@@ -1,0 +1,24 @@
+.btn {
+  background-color: transparent;
+  border: none;
+  border-radius: 100px;
+  color: white;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 7px 10px;
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    background-color: darken($color: $primary, $amount: 20);
+  }
+}
+
+.btn-primary{
+  background-color: $primary;
+  border-radius: 30px;
+  &:disabled{
+    background-color: lighten($color: $primary, $amount: 5);
+  }
+}
+

@@ -1,0 +1,93 @@
+.task__main{
+  display: grid;
+  grid-template-columns: 300px 800px 1fr;
+  .task__main-sidebar { 
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    height: 100vh;
+    .task__entry-colorIcon {
+      color: rgba(33, 34, 104, 0.445) ;
+    }
+    .task__sidebar-title {
+      font-size: 30px;
+      font-weight: bold;
+      color: rgba(33, 34, 104, 0.664);
+    }
+    .task__sidebar-calendar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: rgba(33, 34, 104, 0.671);
+      transition: color .5s ease;
+      &:hover{
+        color : darken($color:rgba(0, 0, 0, 0.521), $amount: 0)
+      }
+    }
+    .task__entries {
+      flex: 1 1 auto;
+      margin-top: 30px;
+      overflow-y: scroll;
+      width: 100%;
+      .task__entry {
+        background-color: rgba(33, 34, 104, 0.178) ;
+        border-radius: 7px;
+        color: $dark-grey;
+        display: flex;
+        margin-bottom: 10px;
+        overflow: hidden;
+      }
+      .task__entry-body {
+        padding:10px;
+        .task__entry-title {
+          font-size: 18px;
+          font-weight: bold;
+        }
+        .task__entry-content {
+          font-size: 14px;
+        }
+      }
+      .task__line-vertical {
+        border-left: 4px solid rgba(33, 34, 104, 0.356);
+      }
+      .task__entry-date-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: column nowrap;
+        font-size: 17px;
+      }
+    }
+    .task__entry-icon {
+      height: 120px;
+    }
+  }
+  .task__main-screen {
+    background-color: rgba(168, 191, 240, 0.164);
+    .task__main-navbar{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 10px;
+      font-size: 30px;
+      font-weight: bold;
+      color: rgba(3, 3, 17, 0.692);
+    }
+    .task__main-button {
+      font-weight: bold;
+      border-radius: 20px;
+      background-color: rgba(252, 7, 7, 0.288);
+    }
+    .task__main-screen-nothing { 
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      height: 100vh;
+    }
+  }
+  .task__main-prioritytask {
+
+  }
+}

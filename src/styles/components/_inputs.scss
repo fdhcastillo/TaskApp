@@ -1,0 +1,25 @@
+.auth__form-title{
+  font-size: 60px;
+}
+.auth__inputs {
+  background-color: #f9d5bd;
+  border:0px;
+  height: 30px;
+  font-size: 15px;
+}
+
+.auth__label {
+  font-size: 20px;
+}
+
+.auth__rememberMe{
+  display:flex;
+  justify-content: space-between;
+  .auth__forgotPass{
+    text-decoration: none;
+    color: #040507;
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+}
