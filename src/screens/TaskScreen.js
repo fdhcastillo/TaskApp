@@ -1,6 +1,8 @@
 import React from 'react'
 import { Sidebar } from '../components/sidebar/Sidebar'
 import { MainTask } from '../components/taskDescription/MainTask'
+import { StatisticTask } from '../components/taskDescription/StatisticTask'
+
 export const TaskScreen = () => {
   return (
     <div className="task__main">
@@ -12,7 +14,7 @@ export const TaskScreen = () => {
         <MainTask></MainTask>
       </div>
       <div className="task__main-prioritytask">
-        <h1>priority task</h1>
+        <StatisticTask></StatisticTask>
       </div>
     </div>
   )
