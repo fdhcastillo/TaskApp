@@ -1,6 +1,7 @@
-import React from 'react'
+import { useDispatch } from 'react-redux';
 import { useFormik} from 'formik'
 import * as Yup from 'yup';
+import { login } from '../actions/auth';
 
 import { Link } from 'react-router-dom'
 
@@ -10,6 +11,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import LockOpenIcon from '@material-ui/icons/LockOpen';
 
 export const LoginForm = () => {
+  const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -21,6 +23,7 @@ export const LoginForm = () => {
     }),
     onSubmit: (formData) => {
       console.log(formData);
+      dispatch(login(1234,'Franco'));
     },
   })
   return (
@@ -64,7 +67,7 @@ export const LoginForm = () => {
           <input type="checkbox" id="rememberpass" value="rememberpass" className="ma-1" />
           Recordarme
         </label>
-        <a className="auth__forgotPass mt-1" href="#">Olvidaste tu contraseña?</a>
+        <a className="auth__forgotPass mt-1" href="/#">Olvidaste tu contraseña?</a>
       </div>
       <button type="submit" className="btn btn-primary mt-5">Ingresar</button>
       <button type="submit" className="btn btn-primary mt-5">Ingresar con Google <i className="fab fa-google"></i></button>
