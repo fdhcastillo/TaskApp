@@ -7,7 +7,7 @@ import { Button, Paper } from '@material-ui/core'
 import MeetingRoomIcon from '@material-ui/icons/MeetingRoom';
 import { Link } from 'react-router-dom';
 import { CreateTask } from './CreateTask';
-import { TableTask } from './TableTask';
+// import { TableTask } from './TableTask';
 
 export const MainTask = () => {
   return (
@@ -54,7 +54,7 @@ export const MainTask = () => {
             </div>
           </Paper>
           <div className="task__main-imgcontainer">
-            <img src={TaskImg} style={{width:'100%'}}></img>
+            <img src={TaskImg} style={{width:'100%'}} alt="taskimg"></img>
           </div>
         </div>
         <div className="task__main-folder">

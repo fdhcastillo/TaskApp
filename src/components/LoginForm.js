@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { useFormik} from 'formik'
 import * as Yup from 'yup';
-import { login } from '../actions/auth';
+import { startGoogleLogin, startLogin } from '../actions/auth';
 
 import { Link } from 'react-router-dom'
 
@@ -12,6 +12,9 @@ import LockOpenIcon from '@material-ui/icons/LockOpen';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
+  const handleGoogleLogin = () =>{
+    dispatch(startGoogleLogin());
+  }
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -22,9 +25,9 @@ export const LoginForm = () => {
       password: Yup.string().required("Debe ingresar su contraseña por favor"),
     }),
     onSubmit: (formData) => {
-      console.log(formData);
-      dispatch(login(1234,'Franco'));
-    },
+      const {email, password} = formData;
+      dispatch(startLogin(email,password));
+    }
   })
   return (
     <form className="auth__form" onSubmit={formik.handleSubmit}>
@@ -70,7 +73,7 @@ export const LoginForm = () => {
         <a className="auth__forgotPass mt-1" href="/#">Olvidaste tu contraseña?</a>
       </div>
       <button type="submit" className="btn btn-primary mt-5">Ingresar</button>
-      <button type="submit" className="btn btn-primary mt-5">Ingresar con Google <i className="fab fa-google"></i></button>
+      <button type="submit" className="btn btn-primary mt-5" onClick={handleGoogleLogin}>Ingresar con Google <i className="fab fa-google"></i></button>
       <Link to="/auth/register"  className="btn btn-primary mt-5" style={{textAlign:'center',textDecoration:'none'}}>Crear cuenta</Link>
     </form>
   )

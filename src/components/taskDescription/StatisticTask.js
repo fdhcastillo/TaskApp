@@ -45,7 +45,7 @@ export const StatisticTask = () => {
         />
       </div>
       <div className="task__main-imgcontainer">
-        <img src={womanTask} style={{width:'100%'}}></img>
+        <img src={womanTask} style={{width:'100%'}} alt="woman"></img>
       </div>
     </>
   )

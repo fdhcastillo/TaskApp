@@ -1,14 +1,18 @@
 import React from 'react'
 import { useFormik} from 'formik'
 import * as Yup from 'yup';
+import { Link } from 'react-router-dom';
+import { registerWithEmailAndPassword } from '../actions/auth';
+
 import Input from '@material-ui/core/Input';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import FaceIcon from '@material-ui/icons/Face';
 import EmailIcon from '@material-ui/icons/Email';
 import LockOpenIcon from '@material-ui/icons/LockOpen';
-import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 export const RegisterForm = () => {
+  const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -28,7 +32,9 @@ export const RegisterForm = () => {
         .oneOf([Yup.ref("password")],"La contraseñas no coinciden"),
     }),
     onSubmit: (formData) => {
-      console.log(formData);
+      const { email, password, name} = formData;
+      dispatch(registerWithEmailAndPassword(email,password,name));
+      
     },
   })
   return (
