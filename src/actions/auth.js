@@ -4,29 +4,38 @@ import { login } from "./creatorActions/actionAuth";
 
 export const startLogin = (email,password) => {
   return (dispatch) => {
-    setTimeout(() => {
-      dispatch(login(123,'franco'))
-    }, 3500);
+    firebase.auth().signInWithEmailAndPassword(email,password)
+      .then(async({user})=> {
+        await dispatch(login(user.uid,user.displayName));
+      })
+      .catch(e => {
+        console.log(e);
+      })
   }
 }
 
 export const startGoogleLogin = () =>{
   return (dispatch) =>{
     firebase.auth().signInWithPopup(googleAuthProvider)
-      .then( ({user}) => {
+      .then(({user}) => {
           dispatch(login(user.uid,user.displayName))
-        }
-    )
+        }) 
+      .catch(e =>{
+        console.log('Error al ingresar a la cuenta  ', e);
+      })
   }
 }
 
 
 export const registerWithEmailAndPassword = (email,password,name) => {
-  return async(dispatch) =>{
+  return (dispatch) =>{
     firebase.auth().createUserWithEmailAndPassword(email,password)
       .then(async({user}) => {
         await user.updateProfile({displayName:name});
         dispatch(login(user.uid,user.displayName))
+      })
+      .catch(e =>{
+        console.log('Error al crear la cuenta', e);
       })
   }
 }
