@@ -8,3 +8,8 @@ export const login = (uid,displayName) => ({
     } 
   }
 )
+
+export const logout = () =>({
+  type: types.logout
+})
+  

@@ -1,5 +1,5 @@
 import { googleAuthProvider,firebase } from "../firebase/firebase-config";
-import { login } from "./creatorActions/actionAuth";
+import { login, logout } from "./creatorActions/actionAuth";
 
 
 export const startLogin = (email,password) => {
@@ -37,5 +37,13 @@ export const registerWithEmailAndPassword = (email,password,name) => {
       .catch(e =>{
         console.log('Error al crear la cuenta', e);
       })
+  }
+}
+
+
+export const startLogout = () => {
+  return async(dispatch) => {
+    await firebase.auth().signOut();
+    dispatch(logout())
   }
 }

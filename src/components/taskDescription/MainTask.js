@@ -7,9 +7,16 @@ import { Button, Paper } from '@material-ui/core'
 import MeetingRoomIcon from '@material-ui/icons/MeetingRoom';
 import { Link } from 'react-router-dom';
 import { CreateTask } from './CreateTask';
+import { useDispatch } from 'react-redux';
+import { startLogout } from '../../actions/auth';
 // import { TableTask } from './TableTask';
 
 export const MainTask = () => {
+  const dispatch = useDispatch();
+  const logoutUser = () =>{
+    dispatch(startLogout());
+  }
+
   return (
     <>
       <div className="task__main-navbar">
@@ -19,6 +26,7 @@ export const MainTask = () => {
               className="task__main-button"
               variant='contained'
               startIcon={<MeetingRoomIcon  style={{fontSize:'25px'}} />}
+              onClick={logoutUser}
             >
               Logout
             </Button>
